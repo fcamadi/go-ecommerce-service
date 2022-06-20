@@ -12,7 +12,9 @@ func main() {
 		server.CreateServer(
 			"",
 			middlewares.WithLogger(
-				http.HandlerFunc(server.RootHandler),
+				middlewares.WithJson(
+					http.HandlerFunc(server.RootHandler),
+				),
 				nil,
 			),
 		),
